@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<meta charset="UTF-8">
+	<title>Controladores y Scope</title>
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body ng-controller="AlumnosController" > 
+	<h1>Cuaderno de Alumnos</h1>
+	
+	<div class="wrapper">
+		<div class="contact-item" ng-repeat="alumno in alumnos | orderBy:nombre">
+			<div>
+				{{alumno.nombre}} - {{alumno.telefono}}
+			</div>
+			<span class="curso">{{alumno.curso}}</span>
+			
+		</div>
+	</div>
+	<br/>
+
+	<center><button ng-click="ShowForm()" ng-hide="formVisibility">Añadir</button></center>
+	<div class="wrapper" ng-show="formVisibility">
+		<h2>Añadir Contacto</h2>
+		
+		<label for="nombre">Nombre: </label>
+		<input type="text" name="nombre" id="nombre" ng-model="nuevoAlumno.nombre">
+
+		<label for="telefono">Telefono: </label>
+		<input type="text" name="telefono" id="telefono" ng-model="nuevoAlumno.telefono">
+
+		<label for="curso">Curso: </label>
+		<input type="text" name="curso" id="curso" ng-model="nuevoAlumno.curso" >
+	
+		<button ng-click="Save()">Guardar</button>
+	</div>
+	
+	
+	<script  src='js/angular.min.js' type="text/javascript"></script>
+	<script src='js/cuaderno.js' type="text/javascript"></script>
+</body>
+</html>
